@@ -6,3 +6,4 @@ voyage-749b8-firebase-adminsdk-2xbkk-31c7d18648.json
 __pycache__
 db.sqlite3
 media
+.DS_Store
