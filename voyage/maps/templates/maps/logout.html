@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+{%load static%}
+{%block main%}
+<h1>Logged Out</h1>
+<div>
+    <form action="/login" method="get">
+        <button type="submit">Log In</button>
+    </form>
+</div>
+<div>
+    <form action="/signup" method="get">
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+{%endblock%}

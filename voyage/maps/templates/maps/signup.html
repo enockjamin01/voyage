@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+{%load static%}
+{%block main%}
+<h1>Sign Up</h1>
+<div>
+    <form action="/signup" method="post">
+        {%csrf_token%}
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email">
+        <label for="password" name="password">Password</label>
+        <input id="password" name="password" type="password">
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div>
+    <form action="/login" method="get">
+        <button type="submit">Log In</button>
+    </form>
+</div>
+{%endblock%}

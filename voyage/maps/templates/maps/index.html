@@ -1,0 +1,38 @@
+{%extends "base.html"%}
+{%load static%}
+{%block preload%}
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+<link href="{%static 'maps/css/maps.css'%}" rel="stylesheet">
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+{%endblock%}
+{%block main%}
+<div id="headers">
+    
+    <h1>Hello, {{name}}</h1>
+    
+    <form action="/" method="post">
+        {%csrf_token%}
+        <input id="coordinatesInput" value="" hidden name="coordinates" type="">
+        <input id="tripname" name="tripname" placeholder="Trip name">
+        <button type="submit">Save Coordinates</button>
+    </form>
+    {%if trips != None%}
+    <label for="savedcoordinates">Saved Coordinates</label>
+    <select id="savedcoordinates" name="savedcoordinates" onchange="onSavedCoordinatesFetched()">
+        <option value="">Choose a Trip</option>
+        {%for trip in trips%}
+        <option value="{{trip.coordinates}}">{{trip.name}}</option>
+        {%endfor%}
+    </select>
+    {%endif%}
+    <form action="/logout" method="get">
+        <button type="submit">Log Out</button>
+    </form>
+</div>
+<div id="map"></div>
+{%block scripts%}
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<script src="{%static 'maps/scripts/maps.js'%}"></script>
+{%endblock%}
+{%endblock%}
